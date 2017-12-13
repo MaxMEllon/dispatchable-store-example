@@ -1,0 +1,52 @@
+{
+  "scripts": {
+    "build": "NODE_ENV=production parcel build index.html --public-url /",
+    "start": "NODE_ENV=development parcel index.html",
+    "fix": "prettier --write ./**/*.js"
+  },
+  "dependencies": {
+    "bulma": "^0.6.1",
+    "dispatchable-store": "^1.1.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.2",
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.13.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.5.1",
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.2.0",
+    "postcss-modules": "^1.1.0",
+    "prettier": "^1.9.2"
+  },
+  "babel": {
+    "env": {
+      "development": {
+        "sourceMaps": "inline"
+      }
+    },
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions",
+              "safari >= 7"
+            ]
+          }
+        }
+      ],
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-react-jsx"
+    ]
+  }
+}
