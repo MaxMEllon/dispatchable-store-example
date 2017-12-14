@@ -13,7 +13,7 @@ const onClick = (key) => {
       next[k] = false
     }
   })
-  store.dispatch(actions.changeCurrentTabs(next))
+  store.dispatch(actions.changeCurrentTabs({ tabs: next }))
 }
 
 export default class Tabs extends Component {
