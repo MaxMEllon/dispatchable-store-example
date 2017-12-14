@@ -3,20 +3,6 @@ import store, { initialState } from '../stores'
 import * as actions from '../actions'
 import socketInitialize from '../sockets'
 
-const logger = (actions, prevState, state) => {
-  console.log(
-    `Action: ${actions.type}\n`,
-    '\tpayload\t=>',
-    actions.payload,
-    '\n',
-    '\tprev\t=>',
-    prevState,
-    '\n',
-    '\tcurrent\t=>',
-    state
-  )
-}
-
 export default function initializeReducer() {
   store.register({
     [actions.connectToSocketServer.name]: (prevState, payload) => {
@@ -64,6 +50,4 @@ export default function initializeReducer() {
       })
     },
   })
-
-  store.subscribe(state => Object.assign({}, state))(logger)
 }

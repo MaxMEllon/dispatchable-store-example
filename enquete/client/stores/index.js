@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import logger from 'dispatchable-store-logger'
 import DispatchableStore from 'dispatchable-store'
 
 export const initialState = {
@@ -14,5 +15,7 @@ export const initialState = {
 }
 
 const store = new DispatchableStore(initialState)
+
+logger(store)
 
 export default store;
