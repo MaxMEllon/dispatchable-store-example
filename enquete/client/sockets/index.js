@@ -4,11 +4,13 @@ import store from '../stores'
 
 export default function sokcetInitalize(socket) {
   socket.on('answers/start', (payload) => {
-    store.dispatch(actions.updateCurrentQuestions(payload.subject, payload.questions))
+    const { subject, questions } = payload
+    store.dispatch(actions.updateCurrentQuestions({ subject, questions }))
     _.defer(() => store.dispatch(actions.startAnswer()))
   })
 
   socket.on('answers/end', (payload) => {
-    store.dispatch(actions.updateResult(payload.results))
+    const { results } = payload
+    store.dispatch(actions.updateResult({ results }))
   })
 }

@@ -20,7 +20,7 @@ export default class Enquete extends Component {
   }
 
   componentDidMount() {
-    store.dispatch(actions.connectToSocketServer(url()))
+    store.dispatch(actions.connectToSocketServer({ url: url() }))
     this.subscriber.push(store.subscribe(state => state.tabs)(this.handleUpdateTabs))
     this.subscriber.push(store.subscribe(state => state.socket)(this.handleConnect))
   }

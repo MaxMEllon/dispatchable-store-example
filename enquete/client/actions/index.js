@@ -1,73 +1,13 @@
-export function connectToSocketServer(url) {
-  return {
-    type: this.connectToSocketServer.name,
-    payload: {
-      url,
-    }
-  }
-}
+import createAction from './creator'
 
-export function changeCurrentTabs(tabs) {
-  return {
-    type: this.changeCurrentTabs.name,
-    payload: {
-      tabs,
-    }
-  }
-}
+import store from '../stores'
 
-export function initalizeEnquete() {
-  return {
-    type: this.initalizeEnquete.name,
-  }
-}
-
-export function updateCurrentQuestions(subject, questions) {
-  return {
-    type: this.updateCurrentQuestions.name,
-    payload: {
-      subject,
-      questions,
-    }
-  }
-}
-
-export function emitQuestions(subject, questions) {
-  return {
-    type: this.emitQuestions.name,
-    payload: {
-      subject,
-      questions,
-    }
-  }
-}
-
-export function startAnswer() {
-  return {
-    type: this.startAnswer.name,
-  }
-}
-
-export function stopAnswer() {
-  return {
-    type: this.stopAnswer.name,
-  }
-}
-
-export function submitAnswer(index) {
-  return {
-    type: this.submitAnswer.name,
-    payload: {
-      index,
-    }
-  }
-}
-
-export function updateResult(results) {
-  return {
-    type: this.updateResult.name,
-    payload: {
-      results,
-    }
-  }
-}
+export const connectToSocketServer = createAction('connectToSocketServer')
+export const changeCurrentTabs = createAction('changeCurrentTabs')
+export const initalizeEnquete = createAction('initalizeEnquete')
+export const updateCurrentQuestions = createAction('updateCurrentQuestions')
+export const emitQuestions = createAction('emitQuestions')
+export const startAnswer = createAction('startAnswer')
+export const stopAnswer = createAction('stopAnswer')
+export const submitAnswer = createAction('submitAnswer')
+export const updateResult = createAction('updateResult')

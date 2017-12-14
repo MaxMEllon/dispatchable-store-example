@@ -18,7 +18,7 @@ export default class Config extends Component {
 
   componentWillUnmount() {
     const { subject, questions } = this.state
-    store.dispatch(actions.updateCurrentQuestions(subject, questions))
+    store.dispatch(actions.updateCurrentQuestions({ subject, questions }))
   }
 
   onInput(e) {
@@ -35,7 +35,7 @@ export default class Config extends Component {
   onStart() {
     const { questions, subject } = this.state
     const { socket } = store.getState()
-    store.dispatch(actions.emitQuestions(subject, questions))
+    store.dispatch(actions.emitQuestions({ subject, questions }))
   }
 
   onStop() {

@@ -39,7 +39,7 @@ export default class Main extends Component {
   }
 
   onSubmitResult(index) {
-    store.dispatch(actions.submitAnswer(index))
+    store.dispatch(actions.submitAnswer({ index }))
   }
 
   renderEnqueteUI() {

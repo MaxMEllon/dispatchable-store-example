@@ -5,19 +5,20 @@ import socketInitialize from '../sockets'
 
 export default function initializeReducer() {
   store.register({
-    [actions.connectToSocketServer.name]: (prevState, payload) => {
+    [actions.connectToSocketServer.type]: (prevState, payload) => {
       if (store.getState().socket) return prevState
       const socket = io(payload.url)
       socketInitialize(socket)
       return Object.assign({}, prevState, { socket })
     },
-    [actions.initalizeEnquete.name]: (prevState, payload) => {
-      return initialState
+    [actions.initalizeEnquete.type]: (prevState, payload) => {
+      const { socket } = store.getState()
+      return Object.assign({}, initialState, { socket })
     },
-    [actions.changeCurrentTabs.name]: (prevState, payload) => {
+    [actions.changeCurrentTabs.type]: (prevState, payload) => {
       return Object.assign({}, prevState, { tabs: payload.tabs })
     },
-    [actions.updateCurrentQuestions.name]: (prevState, payload) => {
+    [actions.updateCurrentQuestions.type]: (prevState, payload) => {
       return Object.assign({}, prevState,
         {
           subject: payload.subject,
@@ -25,25 +26,25 @@ export default function initializeReducer() {
         }
       )
     },
-    [actions.emitQuestions.name]: (prevState, payload) => {
+    [actions.emitQuestions.type]: (prevState, payload) => {
       const { socket } = store.getState()
       socket.emit('questions/update', payload)
       return prevState
     },
-    [actions.startAnswer.name]: (prevState) => {
+    [actions.startAnswer.type]: (prevState) => {
       return Object.assign({}, prevState, { enqueteState: 'started' })
     },
-    [actions.stopAnswer.name]: (prevState) => {
+    [actions.stopAnswer.type]: (prevState) => {
       const { socket } = store.getState()
       socket.emit('answers/stop')
       return prevState
     },
-    [actions.submitAnswer.name]: (prevState, payload) => {
+    [actions.submitAnswer.type]: (prevState, payload) => {
       const { socket } = store.getState()
       socket.emit('answers/submit', { index: payload.index })
       return Object.assign({}, prevState, { enqueteState: 'submitted' })
     },
-    [actions.updateResult.name]: (prevState, payload) => {
+    [actions.updateResult.type]: (prevState, payload) => {
       return Object.assign({}, prevState, {
         enqueteState: 'stopped',
         results: payload.results
